@@ -214,6 +214,16 @@ Retrieves boundaries for all DOM element matching the provided :ref:`selector <s
 
 It returns an array of objects each having four keys: ``top``, ``left``, ``width`` and ``height``.
 
+``getElementStyle()``
+-------------------------------------------------------------------------------
+
+**Signature:** ``getElementStyle(String selector)``
+
+Retrieves information about the node computed style matching the provided selector:`selector <selectors>`.
+
+It returns an Object with all computed propertyName keys.
+
+
 .. index:: Link text
 
 ``getElementByLinkText()``
@@ -225,7 +235,7 @@ Retrieves a single DOM element matching a given :ref:`Link text <selectors>`.
 
 .. versionadded:: 1.1
 
-The ``scope`` argument allow to set the context for searching text on "a" tags::
+The ``scope`` argument allow to set the context for searching text on "a" tags beacause is the default link tag::
 
     // will be performed against the whole document
     __utils__.getElementByLinkText('a link text');
@@ -261,7 +271,7 @@ The ``scope`` argument allow to set the context for executing the XPath query::
 
 Retrieves all DOM elements matching a given :ref:`link text <selectors>`, if any.
 
-.. versionadded:: 1.1.4
+.. versionadded:: 1.1
 
 The ``scope`` argument allows to set the context for searching text on "a" tags.
 

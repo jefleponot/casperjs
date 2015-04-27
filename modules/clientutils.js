@@ -582,7 +582,7 @@
          * Retrieves information about the nodes computed styles the provided selector.
          *
          * @param  String|Object  selector  CSS3/XPath selector
-         * @return Object
+         * @return Array
          */
         this.getElementsStyle = function getElementsStyle(selector) {
             var element = this.findOne(selector);
@@ -696,7 +696,7 @@
          * @param  HTMLElement|null  scope       Element to search child elements within
          * @return Array
          */
-        this.getElementsByLinkText = function getElementByLinkText(expression, scope) {
+        this.getElementsByLinkText = function getElementsByLinkText(expression, scope) {
             scope = scope || this.options.scope;
             var nodes = [], text, style;
             var a = [].filter.call(scope.querySelectorAll("a"), this.elementVisible), i=0, l=a.length;

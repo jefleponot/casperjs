@@ -103,7 +103,7 @@ To ease the use and reading of XPath expressions, a ``selectXPath`` helper is av
 Link text
 ---------
 
-.. versionadded:: 1.1.4
+.. versionadded:: 1.1
 You can alternatively use `Link text <http://docs.seleniumhq.org/docs/03_webdriver.jsp>`_ as webdriver urged::
 
     casper.start('http://domain.tld/page.html', function() {
