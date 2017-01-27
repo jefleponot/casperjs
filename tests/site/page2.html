@@ -4,5 +4,47 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>CasperJS test page 2</title>
     </head>
-    <body>Booh.</body>
+    <body>Booh.
+    <table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td>
+            <div id="mon_cpte">
+                <div style="text-transform:capitalize">
+                    <p>
+                                    <strong>M&nbsp;
+                                        PSN&nbsp; FICTIF</strong>
+                                        <b style="text-transform:uppercase"> martin </b>
+                                        <p> Dr</p>
+                                        Medecine
+                                </p>
+                                abonn&eacute;&nbsp;numéro: 20102791749797<ul>
+                        <li><a href="accueil.do" class="action" tabindex="2"
+                            title="Espace pro.">Espace pro.</a></li>
+                        <li><a href="" target="_self" class="action">test.com</a></li>
+                        <li><a href="" target="_self" class="action" tabindex="3">Disconnection</a></li>
+                    </ul>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+</table>
+<select size="10" id="list" style="width: 450px;text-transform:lowercase">
+</select>
+<!-- comment -->
+</body>
+<script>
+var json = {"count":"3","list":[{"id_vue":"2","commentaire":"Procs","selected":false},{"id_vue":"6","commentaire"
+:"NewProcs","selected":false},{"id_vue":"8","commentaire":"ProcREQ","selected":false}]};
+
+var slct = document.getElementById('list');
+for (var i=0;i<json.count;i++){
+    var opt  = document.createElement("option");
+    opt.innerHTML = (i+1) + ' - ' + json.list[i].commentaire;
+    slct.appendChild(opt);
+}
+
+</script>
 </html>

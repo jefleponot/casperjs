@@ -561,6 +561,60 @@
             }
         };
 
+function display(scope){
+
+    var stylisde = function stylisde(style, text){
+        var capitalize = function(txt){
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        };
+        
+        var transform = style.getPropertyValue("text-transform");
+        switch(transform){
+            case "uppercase": text = text.toUpperCase();break;
+            case "lowercase": text = text.toLowerCase();break;
+           case "capitalize": text = text.replace(/\S+/g, capitalize);break;
+        }
+        return text.replace(/\n/g, "").replace(/^[ ]*|[ ]*$/g, "").replace(/[ ]+/g, " ");
+    };
+    
+    var addSpace = function addSpace(exp, text, flag){
+        if ( text.length > 0 ) {
+            if (flag) {
+                exp += (exp.length) ? ' ' + text : text;
+            } else {
+                exp += (exp.length) ? "\n" + text : text;
+            }
+        }
+        return exp;
+    };
+    
+    function recursive(node) {
+      var str = "", isInline = true, block,style,transform,text;
+      style = window.getComputedStyle(node, null);
+      for (var i=0,l=node.childNodes.length;i<l;i++){
+        if (node.childNodes[i].nodeName === "SCRIPT") {
+            continue;
+        }
+        switch (node.childNodes[i].nodeType) {
+          case Node.TEXT_NODE:
+            str = addSpace(str, stylisde(style, node.childNodes[i].nodeValue), isInline);
+            isInline = true;
+            break;
+        case Node.ELEMENT_NODE : 
+          block = recursive(node.childNodes[i]);
+          str = addSpace(str, block.text, isInline && block.isInline);
+          isInline = block.isInline;
+        }
+      }
+      return {"isInline":style.display === 'inline', "text":str};
+    }
+
+    scope =  document.body;
+    return recursive(scope).text;
+}
+
+console.log(display());
+
         /**
          * Retrieves all DOM elements matching a given XPath expression.
          *
